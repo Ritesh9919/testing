@@ -6,6 +6,8 @@ import {errorHandlerMiddleware} from './middlewares/errorHandler.middleware.js';
 
 // routers
 import userRouter from './routes/user.route.js';
+import blogRouter from './routes/blog.route.js'
+
 
 
 
@@ -24,6 +26,7 @@ app.get('/', (req, res)=> {
 
 // routes
 app.use('/api/v1/users', userRouter);
+app.use('/api/v1/blogs', blogRouter);
 
 app.use(errorHandlerMiddleware);
 
