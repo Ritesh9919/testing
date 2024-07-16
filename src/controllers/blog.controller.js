@@ -36,6 +36,47 @@ const createBlog = asyncHandler(async(req, res, next)=> {
 
 
 
+const getBlog = asyncHandler(async(req, res, next)=> {
+
+})
+
+
+
+const getAllBlogs = asyncHandler(async(req, res, next)=> {
+    
+})
+
+
+
+const getBlogsByBlogger = asyncHandler(async(req, res, next)=> {
+    
+})
+
+
+const getBlogsByAstrologer = asyncHandler(async(req, res, next)=> {
+    
+})
+
+
+
+const updateBlog = asyncHandler(async(req, res, next)=> {
+    
+})
+
+
+
+
+const deleteBlog = asyncHandler(async(req, res, next)=> {
+    
+})
+
+
+
+
+
+
+
+
 
 export {
     createBlog

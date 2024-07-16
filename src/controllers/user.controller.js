@@ -59,6 +59,65 @@ const loginUser = asyncHandler(async(req, res, next)=> {
    return res.status(200).json(new ApiResponse(200, {user:loginUser, accessToken}, "Login successfull"));
 })
 
+const updateUserById = asyncHandler(async(req, res, next)=> {
+   
+})
+
+
+const deleteUserById = asyncHandler(async(req, res, next)=> {
+   
+})
+
+
+const updateBloggerById = asyncHandler(async(req, res, next)=> {
+   
+})
+
+const deleteBloggerById = asyncHandler(async(req, res, next)=> {
+   
+})
+
+const updateAstrologerById = asyncHandler(async(req, res, next)=> {
+   
+})
+
+
+const deleteAtrologerById = asyncHandler(async(req, res, next)=> {
+   
+})
+
+
+const getUserById = asyncHandler(async(req, res, next)=> {
+   
+})
+
+
+const getBloggerById = asyncHandler(async(req, res, next)=> {
+   
+})
+
+
+const getAtrologerById = asyncHandler(async(req, res, next)=> {
+   
+})
+
+
+const getAllUsers = asyncHandler(async(req, res, next)=> {
+
+})
+
+
+const getAllBloggers = asyncHandler(async(req, res, next)=> {
+   
+})
+
+
+const getAllAstrologer = asyncHandler(async(req, res, next)=> {
+   
+})
+
+
+
 
 
 
