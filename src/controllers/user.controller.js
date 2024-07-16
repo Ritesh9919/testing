@@ -7,15 +7,15 @@ const registerUser = asyncHandler(async(req, res, next)=> {
    if(!email || !password || !phone || !dateOfBirth) {
       throw new apiError(400, "All fields are required");
    }
-   console.log(name);
+   
    const user = await User.findOne({email});
    
    if(user) {
     throw new apiError(400, "User already exist");
    }
   
-   const avatarPath = req.file.path;
-   console.log(avatarPath);
+   const avatarPath = req.file?.path;
+   
 
    const createdUser = await User.create({
     name,
@@ -29,15 +29,34 @@ const registerUser = asyncHandler(async(req, res, next)=> {
 
    })
 
+   const registerUser = await User.findById(createdUser._id).select("-password");
+
    return res.status(201)
-   .json(new ApiResponse(200, {user:createdUser}, "Register successfull"));
+   .json(new ApiResponse(200, {user:registerUser}, "Register successfull"));
 
 
 })
 
 
 const loginUser = asyncHandler(async(req, res, next)=> {
-  
+   const {email, password} = req.body;
+   if(!email || !password) {
+      throw new apiError(400, "Both fields are required");
+   }
+
+   const user = await User.findOne({$or:[{email},{password}]});
+   if(!user) {
+      throw new apiError(400, 'User does not exist');
+   }
+
+   const isPasswordCurrect = await user.comparePassword(password);
+   if(!isPasswordCurrect) {
+      throw new apiError(400, 'Password is incorrect');
+   }
+
+   const accessToken = await user.accessToken();
+   const loginUser = await User.findById(user._id).select("-password");
+   return res.status(200).json(new ApiResponse(200, {user:loginUser, accessToken}, "Login successfull"));
 })
 
 
